@@ -1,8 +1,11 @@
+
 const formulario = document.querySelector("#formulario");
 const resultado = document.querySelector("#resultado");
 const registrosPorPagina = 10;
 let paginaActual;
 let totalPaginas;
+
+
 
 formulario.addEventListener("submit", validarFormulario);
 
@@ -39,6 +42,11 @@ function mostrarAlerta(mensaje) {
 function buscarImagenes(termino) {
   const key = "40114053-37be405054cb6ad23fa539460";
   const url = `https://pixabay.com/api/?key=${key}&q=${termino}&per_page=10&page=${paginaActual}`;
+
+  Toastify({
+    text: "This is a toast",
+    duration: 3000,
+  }).showToast();
 
   fetch(url).then(respuesta => respuesta.json()).then(resultado => {
     totalItems = resultado.totalHits;
